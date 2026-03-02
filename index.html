@@ -1,68 +1,395 @@
-<title>Suprith R Kenjoor — Cybersecurity & Web</title>
-
-<!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/layout.css" />
-  <link rel="stylesheet" href="assets/css/components.css" />
-
-  
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suprith R Kenjoor — Cybersecurity & Web</title>
+  <meta name="description" content="Cybersecurity graduate focused on SOC operations, risk, and technical security — with hands-on implementation experience." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+
+  <style>
+    /* Hero label */
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: var(--text-sm);
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.1s forwards;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* Hero name */
+    .hero-name {
+      font-size: var(--text-3xl);
+      font-weight: 800;
+      color: var(--text-hi);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.2s forwards;
+    }
+
+    /* Hero tagline */
+    .hero-tagline {
+      font-family: var(--font-mono);
+      font-size: var(--text-lg);
+      color: var(--text-dim);
+      font-weight: 300;
+      max-width: 55ch;
+      line-height: 1.5;
+      margin-bottom: var(--space-lg);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.35s forwards;
+    }
+
+    .hero-tagline em {
+      font-style: normal;
+      color: var(--text);
+    }
+
+    /* Hero CTAs */
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.5s forwards;
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: var(--space-md);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: var(--text-sm);
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.9s forwards;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(var(--muted), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 1; }
+    }
+
+    /* Credibility section */
+    #credibility {
+      border-top: 1px solid var(--border);
+    }
+
+    /* Card scroll reveal */
+    .card {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out), border-color 0.25s;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:nth-child(2) { transition-delay: 0.1s; }
+    .card:nth-child(3) { transition-delay: 0.2s; }
+
+    /* Stats */
+    #stats {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding-block: var(--space-lg);
+    }
+
+    .stat { text-align: center; }
+
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--text-hi);
+      letter-spacing: -0.04em;
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-number .accent { color: var(--accent); }
+
+    .stat-label {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    /* Tools */
+    #tools {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tools-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-sm);
+    }
+
+    /* CTA section */
+    #cta { text-align: center; }
+
+    #cta h2 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-md);
+    }
+
+    #cta p {
+      color: var(--text-dim);
+      margin-bottom: var(--space-lg);
+      margin-inline: auto;
+    }
+
+    .ctas {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="security.html">Security</a>
-      <a href="web.html">Web</a>
-      <a href="contact.html">Contact</a>
+  <!-- HEADER -->
+  <header id="header">
+    <nav class="container">
+      <a href="index.html" class="nav-logo">suprith<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="web.html">Web</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="security.html" class="btn btn-primary">View Security Profile</a>
     </nav>
   </header>
 
   <main>
 
+    <!-- HERO -->
     <section id="hero">
-      <h1>Suprith R Kenjoor</h1>
-      <p>Cybersecurity graduate focused on SOC operations, risk, and technical security — with hands-on implementation experience.</p>
-      <a href="security.html">View Security Profile</a>
-      <a href="web.html">View Web Work</a>
+      <div class="container hero-inner">
+
+        <div class="availability">
+          <span class="availability-dot"></span>
+          Open to opportunities
+        </div>
+
+        <div class="hero-label">Cybersecurity · SOC · Risk</div>
+
+        <h1 class="hero-name">Suprith R Kenjoor</h1>
+
+        <p class="hero-tagline">
+          Cybersecurity graduate focused on <em>SOC operations, risk,</em>
+          and <em>technical security</em> — with hands-on implementation experience.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="security.html" class="btn btn-primary">View Security Profile</a>
+          <a href="web.html" class="btn btn-ghost">View Web Work</a>
+        </div>
+
+      </div>
+
+      <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span>scroll</span>
+      </div>
     </section>
 
+    <!-- STATS -->
+    <section id="stats">
+      <div class="container grid-4">
+        <div class="stat">
+          <span class="stat-number">3<span class="accent">+</span></span>
+          <span class="stat-label">Security Projects</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">ISO<span class="accent">27k</span></span>
+          <span class="stat-label">Risk Framework</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">SOC<span class="accent">L1</span></span>
+          <span class="stat-label">Operations Focus</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">BSI<span class="accent">×3</span></span>
+          <span class="stat-label">Certifications</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDIBILITY -->
     <section id="credibility">
-      <div>
-        <h3>SOC Operations</h3>
-        <p>Log analysis, alert triage, and incident response workflows.</p>
-        <a href="security.html">View security work</a>
+      <div class="container">
+        <div class="section-tag">Focus Areas</div>
+        <div class="grid-3">
+
+          <article class="card">
+            <div class="card-icon">
+              <i data-lucide="shield-check" style="width:18px;height:18px;"></i>
+            </div>
+            <h3>SOC Operations</h3>
+            <p>Log analysis, alert triage, and incident response workflows using industry-standard tooling.</p>
+            <a href="security.html" class="cred-link">View security work →</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">
+              <i data-lucide="file-shield" style="width:18px;height:18px;"></i>
+            </div>
+            <h3>ISO / Risk</h3>
+            <p>Risk register construction, gap assessments, and control mapping against ISO 27001 frameworks.</p>
+            <a href="security.html" class="cred-link">View risk work →</a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">
+              <i data-lucide="terminal" style="width:18px;height:18px;"></i>
+            </div>
+            <h3>Technical Projects</h3>
+            <p>Hands-on implementation: vulnerability scanning, reconnaissance, and network-level analysis.</p>
+            <a href="projects/openvas.html" class="cred-link">View projects →</a>
+          </article>
+
+        </div>
       </div>
-      <div>
-        <h3>ISO / Risk</h3>
-        <p>Risk registers, gap assessments, ISO 27001 control mapping.</p>
-        <a href="security.html">View risk work</a>
+    </section>
+
+    <!-- TOOLS -->
+    <section id="tools">
+      <div class="container">
+        <div class="tools-header">
+          <h2>What I work with.</h2>
+          <a href="contact.html" class="btn btn-ghost">Get in touch →</a>
+        </div>
+
+        <div class="section-tag">Security</div>
+        <div class="tag-group">
+          <span class="tag active">Splunk</span>
+          <span class="tag active">Wireshark</span>
+          <span class="tag active">OpenVAS</span>
+          <span class="tag active">Nmap</span>
+          <span class="tag">Kali Linux</span>
+          <span class="tag">Burp Suite</span>
+          <span class="tag">SIEM</span>
+        </div>
+
+        <div style="margin-top: var(--space-md);">
+          <div class="section-tag">Development</div>
+          <div class="tag-group">
+            <span class="tag active">HTML5</span>
+            <span class="tag active">CSS</span>
+            <span class="tag active">JavaScript</span>
+            <span class="tag">React</span>
+            <span class="tag">Python</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
       </div>
-      <div>
-        <h3>Technical Projects</h3>
-        <p>Vulnerability scanning, reconnaissance, network analysis.</p>
-        <a href="projects/openvas.html">View projects</a>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta">
+      <div class="container">
+        <h2>Ready to talk specifics.</h2>
+        <p>No generalities. Bring the role, I'll bring the evidence.</p>
+        <div class="ctas">
+          <a href="security.html" class="btn btn-primary">Security Profile</a>
+          <a href="contact.html" class="btn btn-ghost">Contact</a>
+        </div>
       </div>
     </section>
 
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <p>Suprith R Kenjoor — Dubai, UAE</p>
-    <a href="https://github.com/SuprithKr" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank">LinkedIn</a>
+    <div class="container footer-inner">
+      <span class="footer-left">suprith.dev — built without templates.</span>
+      <div class="footer-right">
+        <a href="https://github.com/SuprithKr" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank">LinkedIn</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Scroll header
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Card reveal
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    cards.forEach(c => observer.observe(c));
+  </script>
 
 </body>
 </html>
