@@ -1,0 +1,123 @@
+/* ═══════════════════════════════════════════
+   CONTAINER
+═══════════════════════════════════════════ */
+.container {
+  width: min(1200px, 92vw);
+  margin-inline: auto;
+}
+
+/* ═══════════════════════════════════════════
+   SECTIONS
+═══════════════════════════════════════════ */
+section {
+  padding-block: var(--space-xl);
+}
+
+/* ═══════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════ */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding-block: var(--space-sm);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, background 0.3s, backdrop-filter 0.3s;
+}
+
+header.scrolled {
+  border-color: var(--border);
+  background: rgba(8, 10, 12, 0.85);
+  backdrop-filter: blur(16px);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+#hero {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding-block: calc(var(--space-xl) + 4rem) var(--space-xl);
+  position: relative;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 100%);
+}
+
+#hero::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════
+   GRIDS
+═══════════════════════════════════════════ */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-md);
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding-block: var(--space-lg);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .hero-ctas { flex-direction: column; }
+  .grid-3    { grid-template-columns: 1fr; }
+}
