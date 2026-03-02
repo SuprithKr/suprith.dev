@@ -1,62 +1,261 @@
-<title>Network Recon & Packet Analysis — Suprith R Kenjoor</title>
-
-<!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="../assets/css/base.css" />
-  <link rel="stylesheet" href="../assets/css/layout.css" />
-  <link rel="stylesheet" href="../assets/css/components.css" />
-
-  
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Network Recon & Packet Analysis — Suprith R Kenjoor</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+
+  <style>
+    .project-header {
+      padding-top: calc(var(--space-xl) + 4rem);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-header h1 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-sm);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.1s forwards;
+    }
+
+    .project-header p {
+      color: var(--text-dim);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.25s forwards;
+    }
+
+    .tool-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-sm);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.35s forwards;
+    }
+
+    .project-body {
+      padding-block: var(--space-xl);
+    }
+
+    .project-section {
+      padding-block: var(--space-lg);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--space-md);
+    }
+
+    .project-section:last-child { border-bottom: none; }
+
+    .project-section-label {
+      font-size: var(--text-sm);
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      padding-top: 0.25rem;
+    }
+
+    .project-section-content p {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 60ch;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      transition: color 0.2s;
+      margin-bottom: var(--space-md);
+    }
+
+    .back-link:hover { color: var(--accent); }
+
+    .next-projects {
+      border-top: 1px solid var(--border);
+      padding-block: var(--space-xl);
+    }
+
+    .next-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+
+    .next-card {
+      padding: var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: border-color 0.25s, transform 0.25s var(--ease-out);
+    }
+
+    .next-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-3px);
+    }
+
+    .next-card-label {
+      font-size: var(--text-sm);
+      color: var(--accent);
+      margin-bottom: var(--space-xs);
+      font-family: var(--font-mono);
+    }
+
+    .next-card h3 {
+      font-size: var(--text-base);
+      color: var(--text-hi);
+      margin-bottom: var(--space-xs);
+    }
+
+    .next-card a {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+
+    .next-card a:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .project-section { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="../security.html">Security</a>
-      <a href="../web.html">Web</a>
-      <a href="../contact.html">Contact</a>
+  <!-- HEADER -->
+  <header id="header">
+    <nav class="container">
+      <a href="../index.html" class="nav-logo">suprith<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../security.html">Security</a></li>
+        <li><a href="../web.html">Web</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <a href="../security.html" class="btn btn-primary">Security Profile</a>
     </nav>
   </header>
 
   <main>
 
-    <section id="project">
-      <h1>Network Recon & Packet Analysis</h1>
-      <p>Tools: Kali Linux, Nmap, Wireshark</p>
-
-      <h2>Scenario</h2>
-      <p>Performed reconnaissance on a lab network to simulate the information-gathering phase of a security assessment and identify potential attack surfaces relevant to SOC monitoring.</p>
-
-      <h2>What I Did</h2>
-      <p>Used Nmap to scan the lab network for active hosts, open ports, and running services. Captured live traffic using Wireshark to observe network behavior during the scan.</p>
-
-      <h2>What I Analyzed</h2>
-      <p>Identified exposed services and open ports that could represent attack vectors. Detected abnormal traffic patterns in the packet capture that would trigger alerts in a SOC environment.</p>
-
-      <h2>Decision Made</h2>
-      <p>Documented exposed services with recommended hardening actions. Noted which findings would be flagged as suspicious in a SIEM and what the appropriate SOC response would be for each pattern identified.</p>
+    <!-- PROJECT HEADER -->
+    <section class="project-header">
+      <div class="container">
+        <a href="../security.html" class="back-link">
+          <i data-lucide="arrow-left" style="width:14px;height:14px;"></i>
+          Back to Security
+        </a>
+        <div class="section-tag">Security Project</div>
+        <h1>Network Recon & Packet Analysis</h1>
+        <p>Reconnaissance and packet analysis to identify exposed services and abnormal traffic patterns.</p>
+        <div class="tool-row">
+          <span class="tag active">Kali Linux</span>
+          <span class="tag active">Nmap</span>
+          <span class="tag active">Wireshark</span>
+          <span class="tag">SOC Monitoring</span>
+        </div>
+      </div>
     </section>
 
-    <a href="../security.html">← Back to Security</a>
+    <!-- PROJECT BODY -->
+    <div class="project-body">
+      <div class="container">
+
+        <div class="project-section">
+          <div class="project-section-label">Scenario</div>
+          <div class="project-section-content">
+            <p>Performed reconnaissance on a lab network to simulate the information-gathering phase of a security assessment. The goal was to identify potential attack surfaces and practice recognizing traffic patterns relevant to SOC monitoring and threat detection.</p>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <div class="project-section-label">Tools Used</div>
+          <div class="project-section-content">
+            <p>Nmap was used on Kali Linux to scan the lab network for active hosts, open ports, and running services. Wireshark was run simultaneously to capture live traffic and observe network behavior during the scan in real time.</p>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <div class="project-section-label">What I Analyzed</div>
+          <div class="project-section-content">
+            <p>Identified exposed services and open ports that could represent attack vectors. Detected abnormal traffic patterns in the packet capture — including scan signatures and service probes — that would trigger alerts in a SIEM environment.</p>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <div class="project-section-label">Decision Made</div>
+          <div class="project-section-content">
+            <p>Documented exposed services with recommended hardening actions for each. Identified which findings would be flagged as suspicious in a SIEM and defined the appropriate SOC response for each traffic pattern — mapping detections to realistic analyst workflows.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- NEXT PROJECTS -->
+    <section class="next-projects">
+      <div class="container">
+        <div class="section-tag">More Projects</div>
+        <div class="next-grid">
+
+          <div class="next-card">
+            <div class="next-card-label">OpenVAS · Linux VM</div>
+            <h3>Vulnerability Assessment</h3>
+            <a href="openvas.html">View project →</a>
+          </div>
+
+          <div class="next-card">
+            <div class="next-card-label">Kali Linux · Wireshark</div>
+            <h3>Incident Response Simulation</h3>
+            <a href="incident-response.html">View project →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <p>Suprith R Kenjoor — Dubai, UAE</p>
-    <a href="https://github.com/SuprithKr" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank">LinkedIn</a>
+    <div class="container footer-inner">
+      <span class="footer-left">suprith.dev — built without templates.</span>
+      <div class="footer-right">
+        <a href="https://github.com/SuprithKr" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank">LinkedIn</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    lucide.createIcons();
+
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
 
 </body>
 </html>

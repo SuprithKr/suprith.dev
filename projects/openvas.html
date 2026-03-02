@@ -1,62 +1,270 @@
-<title>OpenVAS Vulnerability Assessment — Suprith R Kenjoor</title>
-
-<!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="../assets/css/base.css" />
-  <link rel="stylesheet" href="../assets/css/layout.css" />
-  <link rel="stylesheet" href="../assets/css/components.css" />
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OpenVAS Vulnerability Assessment — Suprith R Kenjoor</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+
+  <style>
+    .project-header {
+      padding-top: calc(var(--space-xl) + 4rem);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-header h1 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-sm);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.1s forwards;
+    }
+
+    .project-header p {
+      color: var(--text-dim);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.25s forwards;
+    }
+
+    .tool-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-sm);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.35s forwards;
+    }
+
+    .project-body {
+      padding-block: var(--space-xl);
+    }
+
+    .project-section {
+      padding-block: var(--space-lg);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--space-md);
+    }
+
+    .project-section:last-child {
+      border-bottom: none;
+    }
+
+    .project-section-label {
+      font-size: var(--text-sm);
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      padding-top: 0.25rem;
+    }
+
+    .project-section-content h3 {
+      font-size: var(--text-md);
+      margin-bottom: var(--space-sm);
+      color: var(--text-hi);
+    }
+
+    .project-section-content p {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 60ch;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      transition: color 0.2s;
+      margin-bottom: var(--space-md);
+    }
+
+    .back-link:hover { color: var(--accent); }
+
+    .next-projects {
+      border-top: 1px solid var(--border);
+      padding-block: var(--space-xl);
+    }
+
+    .next-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+
+    .next-card {
+      padding: var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: border-color 0.25s, transform 0.25s var(--ease-out);
+    }
+
+    .next-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-3px);
+    }
+
+    .next-card-label {
+      font-size: var(--text-sm);
+      color: var(--accent);
+      margin-bottom: var(--space-xs);
+      font-family: var(--font-mono);
+    }
+
+    .next-card h3 {
+      font-size: var(--text-base);
+      color: var(--text-hi);
+      margin-bottom: var(--space-xs);
+    }
+
+    .next-card a {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+
+    .next-card a:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .project-section {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="../index.html">Home</a>
-      <a href="../security.html">Security</a>
-      <a href="../web.html">Web</a>
-      <a href="../contact.html">Contact</a>
+  <!-- HEADER -->
+  <header id="header">
+    <nav class="container">
+      <a href="../index.html" class="nav-logo">suprith<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../security.html">Security</a></li>
+        <li><a href="../web.html">Web</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <a href="../security.html" class="btn btn-primary">Security Profile</a>
     </nav>
   </header>
 
   <main>
 
-    <section id="project">
-      <h1>OpenVAS Vulnerability Assessment</h1>
-      <p>Tools: OpenVAS, Linux VM</p>
-
-      <h2>Scenario</h2>
-      <p>Simulated a vulnerability assessment on an internal lab network to identify and prioritize security weaknesses before they could be exploited.</p>
-
-      <h2>What I Did</h2>
-      <p>Configured and ran a full OpenVAS scan against the lab environment. Reviewed the generated report, triaged findings by severity, and identified the highest-risk vulnerabilities requiring immediate attention.</p>
-
-      <h2>What I Analyzed</h2>
-      <p>Cross-referenced scan results against known CVEs. Prioritized findings based on CVSS scores and business impact. Mapped critical findings to ISO 27001 control A.12.6.1 — Technical Vulnerability Management.</p>
-
-      <h2>Decision Made</h2>
-      <p>Produced a prioritized remediation list with recommended actions for each high and critical finding. Documented findings in a structured report format suitable for internal audit review.</p>
+    <!-- PROJECT HEADER -->
+    <section class="project-header">
+      <div class="container">
+        <a href="../security.html" class="back-link">
+          <i data-lucide="arrow-left" style="width:14px;height:14px;"></i>
+          Back to Security
+        </a>
+        <div class="section-tag">Security Project</div>
+        <h1>OpenVAS Vulnerability Assessment</h1>
+        <p>Full vulnerability scan on a lab environment — prioritized findings mapped to ISO 27001.</p>
+        <div class="tool-row">
+          <span class="tag active">OpenVAS</span>
+          <span class="tag active">Linux VM</span>
+          <span class="tag">ISO 27001</span>
+        </div>
+      </div>
     </section>
 
-    <a href="../security.html">← Back to Security</a>
+    <!-- PROJECT BODY -->
+    <div class="project-body">
+      <div class="container">
+
+        <div class="project-section">
+          <div class="project-section-label">Scenario</div>
+          <div class="project-section-content">
+            <p>Simulated a vulnerability assessment on an internal lab network to identify and prioritize security weaknesses before they could be exploited. The goal was to produce a structured report suitable for internal audit review.</p>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <div class="project-section-label">Tools Used</div>
+          <div class="project-section-content">
+            <p>OpenVAS running on a Linux VM was used to conduct the full scan. The scan was configured to target the lab environment's IP range and run a comprehensive check against known CVEs and misconfigurations.</p>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <div class="project-section-label">What I Analyzed</div>
+          <div class="project-section-content">
+            <p>Cross-referenced scan results against known CVEs. Triaged findings by CVSS score and business impact. Identified high and critical severity items requiring immediate remediation. Mapped critical findings to ISO 27001 control A.12.6.1 — Technical Vulnerability Management.</p>
+          </div>
+        </div>
+
+        <div class="project-section">
+          <div class="project-section-label">Decision Made</div>
+          <div class="project-section-content">
+            <p>Produced a prioritized remediation list with recommended actions for each high and critical finding. Structured the output as a formal report with severity ratings, affected systems, and remediation timelines — formatted for internal audit consumption.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- NEXT PROJECTS -->
+    <section class="next-projects">
+      <div class="container">
+        <div class="section-tag">More Projects</div>
+        <div class="next-grid">
+
+          <div class="next-card">
+            <div class="next-card-label">Kali Linux · Wireshark</div>
+            <h3>Incident Response Simulation</h3>
+            <a href="incident-response.html">View project →</a>
+          </div>
+
+          <div class="next-card">
+            <div class="next-card-label">Kali Linux · Nmap · Wireshark</div>
+            <h3>Network Recon & Packet Analysis</h3>
+            <a href="recon.html">View project →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <p>Suprith R Kenjoor — Dubai, UAE</p>
-    <a href="https://github.com/SuprithKr" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank">LinkedIn</a>
+    <div class="container footer-inner">
+      <span class="footer-left">suprith.dev — built without templates.</span>
+      <div class="footer-right">
+        <a href="https://github.com/SuprithKr" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank">LinkedIn</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    lucide.createIcons();
+
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+  </script>
 
 </body>
 </html>
