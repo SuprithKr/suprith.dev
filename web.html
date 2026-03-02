@@ -71,7 +71,7 @@
     }
 
     .project-visual {
-      aspect-ratio: 16/10;
+      aspect-ratio: 16/7;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -87,14 +87,7 @@
     }
 
     .project-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 30px 30px;
-      opacity: 0.5;
+      content: none;
     }
 
     .project-visual-inner {
@@ -237,12 +230,7 @@
         <!-- Project 1 -->
         <div class="web-project">
           <div class="project-visual">
-            <div class="project-visual-inner">
-              <div class="project-visual-icon">
-                <i data-lucide="layout" style="width:32px;height:32px;"></i>
-              </div>
-              <span class="project-visual-label">WordPress Theme</span>
-            </div>
+            <img src="assets/images/project-wordpress.png" alt="WordPress Business Website" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);" />
           </div>
           <div class="project-info">
             <div class="project-number">01</div>
@@ -271,12 +259,7 @@
         <!-- Project 2 -->
         <div class="web-project">
           <div class="project-visual">
-            <div class="project-visual-inner">
-              <div class="project-visual-icon">
-                <i data-lucide="shield" style="width:32px;height:32px;"></i>
-              </div>
-              <span class="project-visual-label">React SPA</span>
-            </div>
+            <img src="assets/images/project-incident-tracker.png" alt="Incident Tracker Dashboard" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);" />
           </div>
           <div class="project-info">
             <div class="project-number">02</div>
@@ -305,12 +288,7 @@
         <!-- Project 3 -->
         <div class="web-project">
           <div class="project-visual">
-            <div class="project-visual-inner">
-              <div class="project-visual-icon">
-                <i data-lucide="monitor" style="width:32px;height:32px;"></i>
-              </div>
-              <span class="project-visual-label">Vanilla JS</span>
-            </div>
+            <img src="assets/images/project-automotive.png" alt="Automotive Showcase Website" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);" />
           </div>
           <div class="project-info">
             <div class="project-number">03</div>
