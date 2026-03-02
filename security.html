@@ -1,102 +1,490 @@
-<title>Security Profile — Suprith R Kenjoor</title>
-
-<!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/layout.css" />
-  <link rel="stylesheet" href="assets/css/components.css" />
-  
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Security Profile — Suprith R Kenjoor</title>
+  <meta name="description" content="Cybersecurity graduate with hands-on ISO 27001, SOC fundamentals, and technical security project experience." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+
+  <style>
+    /* Page header */
+    .page-header {
+      padding-top: calc(var(--space-xl) + 4rem);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-sm);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.1s forwards;
+    }
+
+    .page-header p {
+      color: var(--text-dim);
+      max-width: 55ch;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.25s forwards;
+    }
+
+    /* Experience */
+    #experience {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: var(--space-md);
+      padding-block: var(--space-lg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-item:last-child {
+      border-bottom: none;
+    }
+
+    .exp-meta {
+      padding-top: 0.25rem;
+    }
+
+    .exp-company {
+      font-size: var(--text-sm);
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .exp-period {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+    }
+
+    .exp-role {
+      font-family: var(--font-head);
+      font-size: var(--text-md);
+      font-weight: 600;
+      color: var(--text-hi);
+      margin-bottom: var(--space-sm);
+    }
+
+    .exp-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .exp-points li {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .exp-points li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+    }
+
+    /* Competencies */
+    #competencies {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .comp-group h3 {
+      font-size: var(--text-sm);
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-sm);
+      font-family: var(--font-mono);
+      font-weight: 500;
+    }
+
+    .comp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .comp-list li {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .comp-list li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* Projects */
+    #projects {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-card {
+      padding: var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: border-color 0.25s, transform 0.25s var(--ease-out);
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out), border-color 0.25s;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-3px) !important;
+    }
+
+    .project-card:nth-child(2) { transition-delay: 0.1s; }
+    .project-card:nth-child(3) { transition-delay: 0.2s; }
+
+    .project-tools {
+      font-size: var(--text-sm);
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-sm);
+      font-family: var(--font-mono);
+    }
+
+    .project-card h3 {
+      font-size: var(--text-md);
+      margin-bottom: var(--space-xs);
+      color: var(--text-hi);
+    }
+
+    .project-card p {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      margin-bottom: var(--space-sm);
+      max-width: 100%;
+    }
+
+    .project-link {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .project-link:hover { color: var(--accent); }
+
+    /* Certifications */
+    #certifications {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cert-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: border-color 0.2s;
+    }
+
+    .cert-item:hover { border-color: var(--border-hi); }
+
+    .cert-icon {
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .cert-name {
+      font-size: var(--text-sm);
+      color: var(--text-hi);
+      font-weight: 500;
+    }
+
+    .cert-issuer {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      margin-left: auto;
+    }
+
+    /* Resume */
+    #resume {
+      text-align: center;
+      padding-block: var(--space-xl);
+    }
+
+    #resume h2 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-sm);
+    }
+
+    #resume p {
+      color: var(--text-dim);
+      margin-bottom: var(--space-lg);
+      margin-inline: auto;
+    }
+
+    @media (max-width: 640px) {
+      .exp-item {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="security.html">Security</a>
-      <a href="web.html">Web</a>
-      <a href="contact.html">Contact</a>
+  <!-- HEADER -->
+  <header id="header">
+    <nav class="container">
+      <a href="index.html" class="nav-logo">suprith<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="web.html">Web</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="assets/Suprith_Kenjoor_Cybersecurity_Resume.pdf" download class="btn btn-primary">Download Resume</a>
     </nav>
   </header>
 
   <main>
 
-    <section id="summary">
-      <h1>Security Profile</h1>
-      <p>Cybersecurity graduate with hands-on exposure to ISO 27001 operations and SOC fundamentals. Built risk registers, supported internal audit simulations, performed vulnerability assessments, and analyzed logs during incident response labs. Seeking a Junior SOC role under a structured security team.</p>
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+      <div class="container">
+        <div class="section-tag">Security Profile</div>
+        <h1>Built for SOC.<br>Grounded in risk.</h1>
+        <p>Cybersecurity graduate with hands-on exposure to ISO 27001 operations and SOC fundamentals. Built risk registers, supported internal audit simulations, performed vulnerability assessments, and analyzed logs during incident response labs.</p>
+      </div>
     </section>
 
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-tag">Experience</div>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">BSI</span>
+            <span class="exp-period">Jan 2025 – Jun 2025</span>
+          </div>
+          <div>
+            <div class="exp-role">ISO Standards Intern</div>
+            <ul class="exp-points">
+              <li>Developed ISO 27001 risk registers covering 10+ business risks with likelihood, impact, and mitigation mapping.</li>
+              <li>Supported gap analysis and simulated internal audits including control mapping and audit evidence review.</li>
+              <li>Assisted in risk treatment planning and ISMS documentation aligned with ISO/IEC 27001:2022.</li>
+              <li>Contributed to compliance readiness activities supporting ISMS implementation and audit preparation.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-meta">
+            <span class="exp-company">Emircom</span>
+            <span class="exp-period">Feb 2025 – Apr 2025</span>
+          </div>
+          <div>
+            <div class="exp-role">IT Security & Systems Intern</div>
+            <ul class="exp-points">
+              <li>Analyzed backend API data flows related to email processing and identified security and system limitations.</li>
+              <li>Gained exposure to access control concepts, logging requirements, and secure data handling.</li>
+              <li>Documented technical constraints and potential security considerations for internal tooling.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMPETENCIES -->
     <section id="competencies">
-      <h2>Core Competencies</h2>
-      <ul>
-        <li>Log Analysis (Foundational)</li>
-        <li>Incident Handling (Simulated)</li>
-        <li>Vulnerability Management</li>
-        <li>ISO 27001 ISMS</li>
-        <li>Risk Assessment</li>
-        <li>Internal Audit Support</li>
-        <li>Control Mapping</li>
-        <li>Wireshark</li>
-        <li>Nmap</li>
-        <li>OpenVAS</li>
-        <li>Kali Linux</li>
-        <li>Splunk (Basics)</li>
-      </ul>
+      <div class="container">
+        <div class="section-tag">Core Competencies</div>
+        <div class="comp-grid">
+
+          <div class="comp-group">
+            <h3>SOC</h3>
+            <ul class="comp-list">
+              <li>Log Analysis (Foundational)</li>
+              <li>Incident Handling (Simulated)</li>
+              <li>Vulnerability Management</li>
+              <li>Packet Analysis</li>
+            </ul>
+          </div>
+
+          <div class="comp-group">
+            <h3>GRC</h3>
+            <ul class="comp-list">
+              <li>ISO 27001 ISMS</li>
+              <li>Risk Assessment</li>
+              <li>Internal Audit Support</li>
+              <li>Control Mapping</li>
+            </ul>
+          </div>
+
+          <div class="comp-group">
+            <h3>Tools</h3>
+            <ul class="comp-list">
+              <li>Wireshark</li>
+              <li>Nmap</li>
+              <li>OpenVAS</li>
+              <li>Kali Linux</li>
+              <li>Splunk (Basics)</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects">
-      <h2>Hands-On Projects</h2>
+      <div class="container">
+        <div class="section-tag">Hands-On Projects</div>
+        <div class="grid-3">
 
-      <article>
-        <h3>OpenVAS Vulnerability Assessment</h3>
-        <p>Full vulnerability scan on a lab environment. Prioritized high-risk findings and mapped results to ISO 27001 A.12.6.1.</p>
-        <a href="projects/openvas.html">View project</a>
-      </article>
+          <article class="project-card">
+            <div class="project-tools">OpenVAS · Linux VM</div>
+            <h3>Vulnerability Assessment</h3>
+            <p>Full vulnerability scan on a lab environment. Prioritized high-risk findings and mapped results to ISO 27001 A.12.6.1.</p>
+            <a href="projects/openvas.html" class="project-link">View project →</a>
+          </article>
 
-      <article>
-        <h3>Incident Response Simulation</h3>
-        <p>Simulated brute-force attack traffic. Identified IoCs, analyzed abnormal packets, drafted containment and recovery plan.</p>
-        <a href="projects/incident-response.html">View project</a>
-      </article>
+          <article class="project-card">
+            <div class="project-tools">Kali Linux · Wireshark</div>
+            <h3>Incident Response Simulation</h3>
+            <p>Simulated brute-force attack traffic. Identified IoCs, analyzed abnormal packets, drafted containment and recovery plan.</p>
+            <a href="projects/incident-response.html" class="project-link">View project →</a>
+          </article>
 
-      <article>
-        <h3>Network Recon & Packet Analysis</h3>
-        <p>Performed reconnaissance and packet analysis to identify exposed services and abnormal traffic patterns.</p>
-        <a href="projects/recon.html">View project</a>
-      </article>
+          <article class="project-card">
+            <div class="project-tools">Kali Linux · Nmap · Wireshark</div>
+            <h3>Network Recon & Packet Analysis</h3>
+            <p>Performed reconnaissance and packet analysis to identify exposed services and abnormal traffic patterns.</p>
+            <a href="projects/recon.html" class="project-link">View project →</a>
+          </article>
 
+        </div>
+      </div>
     </section>
 
+    <!-- CERTIFICATIONS -->
     <section id="certifications">
-      <h2>Certifications</h2>
-      <ul>
-        <li>ISO/IEC 27001:2022 Lead Implementer — BSI</li>
-        <li>ISO/IEC 20000-1:2018 Lead Implementer — BSI</li>
-        <li>ISO/IEC 9001:2015 Lead Auditor — BSI</li>
-      </ul>
+      <div class="container">
+        <div class="section-tag">Certifications</div>
+        <div class="cert-list">
+
+          <div class="cert-item">
+            <i data-lucide="badge-check" class="cert-icon" style="width:18px;height:18px;"></i>
+            <span class="cert-name">ISO/IEC 27001:2022 Lead Implementer</span>
+            <span class="cert-issuer">BSI</span>
+          </div>
+
+          <div class="cert-item">
+            <i data-lucide="badge-check" class="cert-icon" style="width:18px;height:18px;"></i>
+            <span class="cert-name">ISO/IEC 20000-1:2018 Lead Implementer</span>
+            <span class="cert-issuer">BSI</span>
+          </div>
+
+          <div class="cert-item">
+            <i data-lucide="badge-check" class="cert-icon" style="width:18px;height:18px;"></i>
+            <span class="cert-name">ISO/IEC 9001:2015 Lead Auditor</span>
+            <span class="cert-issuer">BSI</span>
+          </div>
+
+        </div>
+      </div>
     </section>
 
+    <!-- RESUME -->
     <section id="resume">
-      <h2>Resume</h2>
-      <a href="assets/Suprith_Kenjoor_Cybersecurity_Resume.pdf" download>Download Resume (PDF)</a>
+      <div class="container">
+        <h2>Take the full picture.</h2>
+        <p>Everything above, plus education and full project detail.</p>
+        <a href="assets/Suprith_Kenjoor_Cybersecurity_Resume.pdf" download class="btn btn-primary">
+          <i data-lucide="download" style="width:15px;height:15px;"></i>
+          Download Resume
+        </a>
+      </div>
     </section>
 
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <p>Suprith R Kenjoor — Dubai, UAE</p>
-    <a href="https://github.com/SuprithKr" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank">LinkedIn</a>
+    <div class="container footer-inner">
+      <span class="footer-left">suprith.dev — built without templates.</span>
+      <div class="footer-right">
+        <a href="https://github.com/SuprithKr" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank">LinkedIn</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Scroll header
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Card reveal
+    const cards = document.querySelectorAll('.project-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    cards.forEach(c => observer.observe(c));
+  </script>
 
 </body>
 </html>
