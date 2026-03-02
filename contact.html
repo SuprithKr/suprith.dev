@@ -1,67 +1,302 @@
-<title>Contact — Suprith R Kenjoor</title>
-
-<!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/layout.css" />
-  <link rel="stylesheet" href="assets/css/components.css" />
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — Suprith R Kenjoor</title>
+  <meta name="description" content="Get in touch with Suprith R Kenjoor — open to Junior SOC and cybersecurity roles in Dubai." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+
+  <style>
+    .page-header {
+      padding-top: calc(var(--space-xl) + 4rem);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header h1 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-sm);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.1s forwards;
+    }
+
+    .page-header p {
+      color: var(--text-dim);
+      max-width: 45ch;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.25s forwards;
+    }
+
+    /* Contact grid */
+    #contact {
+      padding-block: var(--space-xl);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    /* Contact links */
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: border-color 0.25s, transform 0.25s var(--ease-out);
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    .contact-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out), border-color 0.25s;
+    }
+
+    .contact-item:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-2px) !important;
+    }
+
+    .contact-item:nth-child(2) { transition-delay: 0.1s; }
+    .contact-item:nth-child(3) { transition-delay: 0.2s; }
+    .contact-item:nth-child(4) { transition-delay: 0.3s; }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .contact-value {
+      font-size: var(--text-base);
+      color: var(--text-hi);
+      transition: color 0.2s;
+    }
+
+    .contact-item:hover .contact-value {
+      color: var(--accent);
+    }
+
+    /* Right side info */
+    .contact-info {
+      padding: var(--space-md);
+    }
+
+    .contact-info h2 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-md);
+    }
+
+    .info-block {
+      margin-bottom: var(--space-lg);
+    }
+
+    .info-block-label {
+      font-size: var(--text-sm);
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-xs);
+      font-family: var(--font-mono);
+    }
+
+    .info-block p {
+      font-size: var(--text-sm);
+      color: var(--text-dim);
+      max-width: 100%;
+    }
+
+    .info-block strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="security.html">Security</a>
-      <a href="web.html">Web</a>
-      <a href="contact.html">Contact</a>
+  <!-- HEADER -->
+  <header id="header">
+    <nav class="container">
+      <a href="index.html" class="nav-logo">suprith<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="web.html">Web</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="security.html" class="btn btn-primary">View Security Profile</a>
     </nav>
   </header>
 
   <main>
 
-    <section id="contact">
-      <h1>Contact</h1>
-      <p>Based in Dubai, UAE. Open to Junior SOC and cybersecurity roles.</p>
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+      <div class="container">
+        <div class="section-tag">Contact</div>
+        <h1>Let's talk.</h1>
+        <p>Based in Dubai. Open to Junior SOC and cybersecurity roles. No recruiters asking for unpaid trials.</p>
+      </div>
+    </section>
 
-      <ul>
-        <li>
-          <strong>Email</strong>
-          <a href="mailto:skenjoor25@gmail.com">skenjoor25@gmail.com</a>
-        </li>
-        <li>
-          <strong>LinkedIn</strong>
-          <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank">linkedin.com/in/suprith-kenjoor</a>
-        </li>
-        <li>
-          <strong>GitHub</strong>
-          <a href="https://github.com/SuprithKr" target="_blank">github.com/SuprithKr</a>
-        </li>
-        <li>
-          <strong>Phone</strong>
-          <a href="tel:+971565536697">+971 56 5536697</a>
-        </li>
-      </ul>
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container contact-grid">
+
+        <!-- Links -->
+        <div class="contact-links">
+
+          <a href="mailto:skenjoor25@gmail.com" class="contact-item">
+            <div class="contact-icon">
+              <i data-lucide="mail" style="width:18px;height:18px;"></i>
+            </div>
+            <div>
+              <span class="contact-label">Email</span>
+              <span class="contact-value">skenjoor25@gmail.com</span>
+            </div>
+          </a>
+
+          <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank" class="contact-item">
+            <div class="contact-icon">
+              <i data-lucide="linkedin" style="width:18px;height:18px;"></i>
+            </div>
+            <div>
+              <span class="contact-label">LinkedIn</span>
+              <span class="contact-value">suprith-kenjoor</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/SuprithKr" target="_blank" class="contact-item">
+            <div class="contact-icon">
+              <i data-lucide="github" style="width:18px;height:18px;"></i>
+            </div>
+            <div>
+              <span class="contact-label">GitHub</span>
+              <span class="contact-value">SuprithKr</span>
+            </div>
+          </a>
+
+          <a href="tel:+971565536697" class="contact-item">
+            <div class="contact-icon">
+              <i data-lucide="phone" style="width:18px;height:18px;"></i>
+            </div>
+            <div>
+              <span class="contact-label">Phone</span>
+              <span class="contact-value">+971 56 5536697</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Info -->
+        <div class="contact-info">
+          <h2>What I'm looking for.</h2>
+
+          <div class="info-block">
+            <div class="info-block-label">Role</div>
+            <p><strong>Junior SOC Analyst</strong> or entry-level cybersecurity position under a structured security team.</p>
+          </div>
+
+          <div class="info-block">
+            <div class="info-block-label">Location</div>
+            <p><strong>Dubai, UAE.</strong> Available immediately.</p>
+          </div>
+
+          <div class="info-block">
+            <div class="info-block-label">Background</div>
+            <p>BE Computer Science & Engineering. Hands-on ISO 27001 internship at BSI. Security projects in vulnerability assessment, incident response, and network recon.</p>
+          </div>
+
+          <a href="assets/Suprith_Kenjoor_Cybersecurity_Resume.pdf" download class="btn btn-primary">
+            <i data-lucide="download" style="width:15px;height:15px;"></i>
+            Download Resume
+          </a>
+        </div>
+
+      </div>
     </section>
 
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <p>Suprith R Kenjoor — Dubai, UAE</p>
-    <a href="https://github.com/SuprithKr" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank">LinkedIn</a>
+    <div class="container footer-inner">
+      <span class="footer-left">suprith.dev — built without templates.</span>
+      <div class="footer-right">
+        <a href="https://github.com/SuprithKr" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/suprith-kenjoor" target="_blank">LinkedIn</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    lucide.createIcons();
+
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Contact item reveal
+    const items = document.querySelectorAll('.contact-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    items.forEach(i => observer.observe(i));
+  </script>
 
 </body>
 </html>
